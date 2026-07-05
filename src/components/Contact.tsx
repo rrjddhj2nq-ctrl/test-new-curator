@@ -1,10 +1,11 @@
 import { FormEvent, useState } from "react";
-import { site, socialLinks } from "../config/site";
-import { contact } from "../data/sections";
+import { siteMeta, socialHrefs } from "../i18n/types";
+import { useLanguage } from "../i18n";
 import Button from "./Button";
 import SectionIntro from "./SectionIntro";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [sent, setSent] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -17,43 +18,43 @@ export default function Contact() {
       <div className="container contact-grid">
         <div>
           <SectionIntro
-            eyebrow={contact.eyebrow}
-            title={contact.title}
-            lead={contact.lead}
+            eyebrow={t.contact.eyebrow}
+            title={t.contact.title}
+            lead={t.contact.lead}
             dark
           />
-          <a href={`mailto:${site.email}`} className="contact-email">{site.email}</a>
+          <a href={`mailto:${siteMeta.email}`} className="contact-email">{siteMeta.email}</a>
           <div className="contact-social">
-            {socialLinks.map(({ label, href }) => (
-              <a key={href} href={href} target="_blank" rel="noreferrer">{label}</a>
+            {socialHrefs.map(({ key, href }) => (
+              <a key={href} href={href} target="_blank" rel="noreferrer">{t.social[key]}</a>
             ))}
           </div>
         </div>
 
         <div className="contact-form">
           {sent ? (
-            <p className="contact-done">{contact.successMessage}</p>
+            <p className="contact-done">{t.contact.successMessage}</p>
           ) : (
             <form onSubmit={handleSubmit}>
-              <h3 className="contact-form__label">{contact.formLabel}</h3>
+              <h3 className="contact-form__label">{t.contact.formLabel}</h3>
               <div className="form-field">
-                <input name="name" type="text" placeholder="Name *" required />
+                <input name="name" type="text" placeholder={t.contact.namePlaceholder} required />
               </div>
               <div className="form-field">
-                <input name="email" type="email" placeholder="Email *" required />
+                <input name="email" type="email" placeholder={t.contact.emailPlaceholder} required />
               </div>
               <div className="form-field">
                 <select name="interest" defaultValue="">
-                  <option value="" disabled>Select an option</option>
-                  {contact.interestOptions.map((option) => (
+                  <option value="" disabled>{t.contact.selectPlaceholder}</option>
+                  {t.contact.interestOptions.map((option) => (
                     <option key={option} value={option}>{option}</option>
                   ))}
                 </select>
               </div>
               <div className="form-field">
-                <textarea name="message" rows={3} placeholder="Message" />
+                <textarea name="message" rows={3} placeholder={t.contact.messagePlaceholder} />
               </div>
-              <Button type="submit" variant="gold-outline">{contact.submitCta}</Button>
+              <Button type="submit" variant="gold-outline">{t.contact.submitCta}</Button>
             </form>
           )}
         </div>

@@ -62,6 +62,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .header-links { display: flex; gap: 28px; }
 .header-links a { font-size: 0.875rem; opacity: 0.75; transition: opacity 0.2s; }
 .header-links a:hover { opacity: 1; }
+.header-right { display: flex; align-items: center; gap: 24px; margin-left: auto; }
+.lang-switch { display: flex; gap: 2px; border: 1px solid rgba(0,0,0,0.1); border-radius: 999px; padding: 2px; }
+.lang-switch button {
+  font-size: 0.75rem; padding: 4px 10px; border-radius: 999px;
+  opacity: 0.55; transition: opacity 0.2s, background 0.2s;
+}
+.lang-switch button:hover { opacity: 0.85; }
+.lang-switch button.active { opacity: 1; background: rgba(8,101,82,0.1); font-weight: 600; }
 .header-menu { display: none; flex-direction: column; gap: 5px; padding: 6px; }
 .header-menu span { width: 20px; height: 1.5px; background: var(--charcoal); }
 
@@ -280,6 +288,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
   .header-menu { display: flex; }
+  .header-right { gap: 12px; }
   .header-links {
     display: none; position: absolute; top: 100%; left: 0; right: 0;
     flex-direction: column; background: var(--ivory); padding: 16px 20px;

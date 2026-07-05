@@ -1,21 +1,23 @@
-import { insights, research } from "../data/sections";
+import { useLanguage } from "../i18n";
 import SectionIntro from "./SectionIntro";
 
 export default function ResearchSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="research" className="research">
       <div className="container">
         <div className="research-head">
-          <SectionIntro title={research.title} lead={research.lead} />
-          <a href="#contact" className="research-subscribe">{research.subscribeCta}</a>
+          <SectionIntro title={t.research.title} lead={t.research.lead} />
+          <a href="#contact" className="research-subscribe">{t.research.subscribeCta}</a>
         </div>
 
         <div className="research-scroll">
-          {insights.map((item) => (
+          {t.insights.map((item) => (
             <article key={item.title} className="research-card">
-              <span className="research-card__type">{item.type}</span>
+              <span className="research-card__type">{t.research.types[item.type]}</span>
               <h3 className="research-card__title">{item.title}</h3>
-              <a href={item.url} className="research-card__link">{research.cardCta}</a>
+              <a href={item.url} className="research-card__link">{t.research.cardCta}</a>
             </article>
           ))}
         </div>

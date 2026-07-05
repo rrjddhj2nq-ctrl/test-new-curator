@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { tvlPeriodScale } from "../config/site";
-import { tvl } from "../data/sections";
-import type { TvlPeriod } from "../types/content";
+import { tvlChartValues, tvlPeriodScale, type TvlPeriodKey } from "../i18n";
+import { useLanguage } from "../i18n";
 import SectionIntro from "./SectionIntro";
 
+const periodKeys: TvlPeriodKey[] = ["yearly", "monthly", "weekly"];
+
 export default function TvlSection() {
-  const [period, setPeriod] = useState<TvlPeriod>("Yearly");
+  const { t } = useLanguage();
+  const [period, setPeriod] = useState<TvlPeriodKey>("yearly");
   const scale = tvlPeriodScale[period];
 
   return (
@@ -13,32 +15,32 @@ export default function TvlSection() {
       <div className="container">
         <div className="tvl-panel">
           <div className="tvl-head">
-            <SectionIntro eyebrow={tvl.eyebrow} title={tvl.title} dark />
+            <SectionIntro eyebrow={t.tvl.eyebrow} title={t.tvl.title} dark />
             <div className="tvl-tabs" role="tablist">
-              {tvl.periods.map((p) => (
+              {periodKeys.map((key) => (
                 <button
-                  key={p}
+                  key={key}
                   role="tab"
-                  aria-selected={period === p}
-                  className={period === p ? "active" : ""}
-                  onClick={() => setPeriod(p)}
+                  aria-selected={period === key}
+                  className={period === key ? "active" : ""}
+                  onClick={() => setPeriod(key)}
                 >
-                  {p}
+                  {t.tvl.periods[key]}
                 </button>
               ))}
             </div>
           </div>
 
           <div className="tvl-chart" aria-label="TVL chart">
-            {tvl.chart.map((point) => (
-              <div key={point.label} className="tvl-col">
-                <div className="tvl-bar" style={{ height: `${point.value * scale}%` }} />
-                <span>{point.label}</span>
+            {tvlChartValues.map((value, index) => (
+              <div key={t.tvl.chartLabels[index]} className="tvl-col">
+                <div className="tvl-bar" style={{ height: `${value * scale}%` }} />
+                <span>{t.tvl.chartLabels[index]}</span>
               </div>
             ))}
           </div>
 
-          <a href="#contact" className="tvl-link">{tvl.cta}</a>
+          <a href="#contact" className="tvl-link">{t.tvl.cta}</a>
         </div>
       </div>
     </section>
