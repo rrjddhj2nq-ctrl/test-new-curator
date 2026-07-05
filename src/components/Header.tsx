@@ -13,12 +13,14 @@ export default function Header() {
     <header className="header">
       <nav className="container header-nav">
         <a href="/" className="header-logo">{siteMeta.name}</a>
-        <div className="header-right">
-          <div className={`header-links ${open ? "open" : ""}`}>
-            {navHrefs.map(({ key, href }) => (
-              <a key={href} href={href} onClick={() => setOpen(false)}>{t.nav[key]}</a>
-            ))}
-          </div>
+
+        <div className="header-links">
+          {navHrefs.map(({ key, href }) => (
+            <a key={href} href={href}>{t.nav[key]}</a>
+          ))}
+        </div>
+
+        <div className="header-actions">
           <div className="lang-switch" role="group" aria-label="Language">
             {(["en", "zh"] as Locale[]).map((code) => (
               <button
@@ -32,11 +34,24 @@ export default function Header() {
               </button>
             ))}
           </div>
+          <button
+            className={`header-menu ${open ? "open" : ""}`}
+            aria-label="Menu"
+            aria-expanded={open}
+            onClick={() => setOpen(!open)}
+          >
+            <span /><span />
+          </button>
         </div>
-        <button className="header-menu" aria-label="Menu" onClick={() => setOpen(!open)}>
-          <span /><span />
-        </button>
       </nav>
+
+      <div className={`header-mobile-nav ${open ? "open" : ""}`}>
+        <div className="container header-mobile-nav__inner">
+          {navHrefs.map(({ key, href }) => (
+            <a key={href} href={href} onClick={() => setOpen(false)}>{t.nav[key]}</a>
+          ))}
+        </div>
+      </div>
     </header>
   );
 }
