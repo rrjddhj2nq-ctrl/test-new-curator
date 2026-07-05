@@ -1,0 +1,27 @@
+.btn {
+  position: relative; overflow: hidden; display: inline-flex;
+  align-items: center; justify-content: center;
+  min-width: 156px; padding: 10.5px 24px;
+  font-size: 16px; font-weight: 500; line-height: 1.4;
+  transition: color 0.3s; text-decoration: none;
+}
+.btn__text { position: relative; z-index: 1; }
+.btn__fill {
+  position: absolute; inset: 0; transform-origin: bottom;
+  transition: transform 0.3s ease-out;
+}
+
+.btn--emerald-filled { border: 1px solid var(--emerald); color: var(--ivory); }
+.btn--emerald-filled .btn__fill { background: var(--emerald); transform: scaleY(1); }
+.btn--emerald-filled:hover { color: var(--emerald); }
+.btn--emerald-filled:hover .btn__fill { transform: scaleY(0); }
+
+.btn--emerald-outline { border: 1px solid var(--emerald); color: var(--emerald); background: transparent; }
+.btn--emerald-outline .btn__fill { background: var(--emerald); transform: scaleY(0); }
+.btn--emerald-outline:hover { color: var(--ivory); }
+.btn--emerald-outline:hover .btn__fill { transform: scaleY(1); }
+
+.btn--gold-outline { border: 1px solid var(--gold); color: var(--gold); background: transparent; }
+.btn--gold-outline .btn__fill { background: var(--gold); transform: scaleY(0); }
+.btn--gold-outline:hover { color: var(--charcoal); }
+.btn--gold-outline:hover .btn__fill { transform: scaleY(1); }
