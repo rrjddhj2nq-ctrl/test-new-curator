@@ -1,4 +1,4 @@
-import type { Service } from "../types/content";
+import type { GroveModule, Insight, Service, Stat } from "../types/content";
 
 export type Locale = "en" | "zh";
 
@@ -7,22 +7,36 @@ export type TvlPeriodKey = "yearly" | "monthly" | "weekly";
 export interface SiteContent {
   nav: { services: string; grove: string; research: string; contact: string };
   hero: { title: string; lead: string; cta: string };
+  stats: Stat[];
   tvl: {
     eyebrow: string;
     title: string;
+    caption: string;
     cta: string;
     periods: Record<TvlPeriodKey, string>;
     chartLabels: string[];
   };
   servicesSection: { title: string; lead: string };
   services: Service[];
-  learnMore: string;
+  common: {
+    learnMore: string;
+    close: string;
+    readMore: string;
+    capabilities: string;
+    idealFor: string;
+    deliverables: string;
+    keyTakeaways: string;
+    contactCta: string;
+  };
   grove: {
     name: string;
     title: string;
     lead: string;
     bullets: string[];
     cta: string;
+    detailTitle: string;
+    detailLead: string;
+    modules: GroveModule[];
   };
   research: {
     title: string;
@@ -31,7 +45,7 @@ export interface SiteContent {
     cardCta: string;
     types: { caseStudy: string; research: string };
   };
-  insights: { type: "caseStudy" | "research"; title: string; url: string }[];
+  insights: Insight[];
   contact: {
     eyebrow: string;
     title: string;

@@ -15,6 +15,7 @@ type ButtonProps = BaseProps & {
 
 type LinkProps = BaseProps & {
   href: string;
+  onClick?: () => void;
 };
 
 type Props = ButtonProps | LinkProps;
@@ -36,8 +37,9 @@ export default function Button(props: Props) {
   const { children, variant = "emerald-outline", className = "" } = props;
 
   if ("href" in props && props.href) {
+    const { onClick } = props;
     return (
-      <a href={props.href} className={classes(variant, className)}>
+      <a href={props.href} className={classes(variant, className)} onClick={onClick}>
         <Inner>{children}</Inner>
       </a>
     );

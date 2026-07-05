@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import ResearchSection from "./components/ResearchSection";
 import Services from "./components/Services";
+import StatsBar from "./components/StatsBar";
 import TvlSection from "./components/TvlSection";
 import { LanguageProvider } from "./i18n";
 
@@ -15,6 +16,7 @@ export default function App() {
         <Header />
         <main>
           <Hero />
+          <StatsBar />
           <TvlSection />
           <Services />
           <GroveSection />

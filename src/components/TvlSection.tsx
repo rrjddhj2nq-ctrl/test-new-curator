@@ -31,6 +31,8 @@ export default function TvlSection() {
             </div>
           </div>
 
+          <p className="tvl-caption">{t.tvl.caption}</p>
+
           <div className="tvl-chart" aria-label="TVL chart">
             {tvlChartValues.map((value, index) => (
               <div key={t.tvl.chartLabels[index]} className="tvl-col">

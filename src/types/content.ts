@@ -1,18 +1,35 @@
 export type ButtonVariant = "emerald-filled" | "emerald-outline" | "gold-outline";
 
-export type NavLink = { label: string; href: string };
+export type ServiceDetail = {
+  overview: string;
+  capabilities: string[];
+  idealFor: string;
+  deliverables: string[];
+};
 
 export type Service = {
+  id: string;
   title: string;
   description: string;
   bullets: string[];
   accent: "emerald" | "charcoal" | "gold" | "blend";
+  detail: ServiceDetail;
 };
 
-export type Insight = { type: string; title: string; url: string };
+export type GroveModule = {
+  name: string;
+  summary: string;
+  features: string[];
+};
 
-export type ChartPoint = { label: string; value: number };
+export type Insight = {
+  id: string;
+  type: "caseStudy" | "research";
+  title: string;
+  readTime: string;
+  excerpt: string;
+  summary: string;
+  keyPoints: string[];
+};
 
-export type TvlPeriod = "Yearly" | "Monthly" | "Weekly";
-
-export type SocialLink = { label: string; href: string };
+export type Stat = { value: string; label: string };
